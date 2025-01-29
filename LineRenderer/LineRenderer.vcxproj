@@ -157,6 +157,9 @@
     <ClCompile Include="..\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Box2d.cpp" />
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="ColisionInfo.cpp" />
     <ClCompile Include="Colour.cpp" />
     <ClCompile Include="DotClicker.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
@@ -164,6 +167,7 @@
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLFWCallbacks.cpp" />
     <ClCompile Include="LineRenderer.cpp" />
+    <ClCompile Include="PhysicsEnvro.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="ApplicationHarness.cpp" />
@@ -187,6 +191,9 @@
     <ClInclude Include="AppInfo.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Box2d.h" />
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="ColisionInfo.h" />
+    <ClInclude Include="CollisionFunctions.h" />
     <ClInclude Include="Colour.h" />
     <ClInclude Include="DotClicker.h" />
     <ClInclude Include="Example.h" />
@@ -198,6 +205,7 @@
     <ClInclude Include="LevelGrid.h" />
     <ClInclude Include="LineRenderer.h" />
     <ClInclude Include="Maths.h" />
+    <ClInclude Include="PhysicsEnvro.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ApplicationHarness.h" />

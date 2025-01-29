@@ -1,11 +1,11 @@
 #include "ApplicationHarness.h"
 
 //Include the necessary header file here for your game type
-#include "TestingApp.h"
+#include "PhysicsEnvro.h"
 
 int main()
 {
-	ApplicationHarness program(new TestingApp());	//Create a new instance of your application type to pass into the harness here.
+	ApplicationHarness program(new PhysicsEnvro());	//Create a new instance of your application type to pass into the harness here.
 
 	program.Run();
 
