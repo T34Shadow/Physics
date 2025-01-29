@@ -59,10 +59,12 @@
     <ClCompile Include="TextStream.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="TestingApp.cpp">
+    <ClCompile Include="PhysicsObject.cpp">
       <Filter>Game\Source</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsObject.cpp" />
+    <ClCompile Include="TestingApp.cpp">
+      <Filter>Game\Examples</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLFWCallbacks.h">
@@ -146,10 +148,19 @@
     <ClInclude Include="Key.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="TestingApp.h">
+    <ClInclude Include="PhysicsObject.h">
       <Filter>Game\Header</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsObject.h">
+    <ClInclude Include="TestingApp.h">
+      <Filter>Game\Examples</Filter>
+    </ClInclude>
+    <ClInclude Include="Stb__Image.h">
+      <Filter>Game\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Box2d.h">
+      <Filter>Game\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelGrid.h">
       <Filter>Game\Header</Filter>
     </ClInclude>
   </ItemGroup>

@@ -40,15 +40,16 @@ void TestingApp::Update(float delta)
 		float overlap = (physicsObjects[i]->GetPos() - PlayerObject->GetPos()).GetMagnitude();
 		if (overlap <= physicsObjects[i]->GetSize() + PlayerObject->GetSize())
 		{
-			Vec2 newPos = physicsObjects[i]->GetPos() + (physicsObjects[i]->GetPos() - PlayerObject->GetPos()) * delta;
+			//update vel rather then the pos of an object
 
-			physicsObjects[i]->SetPos(newPos);
+			//Vec2 newPos = physicsObjects[i]->GetPos() + (physicsObjects[i]->GetPos() - PlayerObject->GetPos()) * delta;
+			//physicsObjects[i]->SetPos(newPos);
 
-			physicsObjects[i]->SetColour(Colour(1, 0, 0));
+			physicsObjects[i]->SetColour(Colour::RED);
 		}
 		else
 		{
-			physicsObjects[i]->SetColour(Colour(1, 1, 1));
+			physicsObjects[i]->SetColour(Colour::WHITE);
 		}
 	}
 
@@ -58,20 +59,21 @@ void TestingApp::Update(float delta)
 	{
 		for (int j = 0; j < physicsObjects.size(); j++)
 		{
+			if (i == j) continue;
+
 			float overlap = (physicsObjects[i]->GetPos() - physicsObjects[j]->GetPos()).GetMagnitude();
 			if (overlap <= physicsObjects[i]->GetSize() + physicsObjects[j]->GetSize())
 			{
-				Vec2 newPos = physicsObjects[i]->GetPos() + (physicsObjects[i]->GetPos() - physicsObjects[j]->GetPos()) * delta;
-
-				physicsObjects[i]->SetPos(newPos);
-
-				physicsObjects[i]->SetColour(Colour(1, 0, 1));
-			}
-			else
-			{
-				physicsObjects[i]->SetColour(Colour(1, 1, 1));
+				//update vel rather then the pos of an object
+				
+				//Vec2 newPos = physicsObjects[i]->GetPos() + (physicsObjects[i]->GetPos() - physicsObjects[j]->GetPos()) * delta;
+				//physicsObjects[i]->SetPos(newPos);
+			
+				physicsObjects[i]->SetColour(Colour::YELLOW);
+				std::cout << "object " << i << " has been hit" << std::endl;
 			}
 		}
+		physicsObjects[i]->Update(delta);
 	}
 
 	//Drawing Update.

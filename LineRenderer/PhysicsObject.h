@@ -26,6 +26,7 @@ public:
 	PhysicsObject(Vec2 _pos, float _size);
 	PhysicsObject(Vec2 _pos, float _size, Colour _colour);
 
+	void Update(float delta);
 	void Draw(Vec2 _pos, float _size, Colour _colour);
 
 	Vec2 GetPos() { return pos; }

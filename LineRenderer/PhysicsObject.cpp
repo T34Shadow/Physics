@@ -22,6 +22,12 @@ PhysicsObject::PhysicsObject(Vec2 _pos, float _size, Colour _colour)
 	colour = _colour;
 }
 
+void PhysicsObject::Update(float delta)
+{
+	pos += vel;
+	vel += acc;
+}
+
 void PhysicsObject::Draw(Vec2 _pos, float _size, Colour _colour)
 {
 	lines->DrawCircle(_pos, _size, _colour);
