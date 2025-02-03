@@ -1,22 +1,12 @@
 #include "Circle.h"
 #include "LineRenderer.h"
 
-
-Circle::Circle()
+Circle::Circle(Vec2 _pos, float _radius) : PhysicsObject(_pos), radius(_radius)
 {
-	pos = Vec2(0, 0);
-	radius = 1.0f;
-	inverseMass = 1.0f/ (radius * radius);
+	inverseMass = 1.0f / (radius * radius);
 }
 
-Circle::Circle(Vec2 _pos, float _radius)
+void Circle::Draw(LineRenderer* lines) const
 {
-	pos = _pos;
-	radius = _radius;
-	inverseMass = 1.0f/ (radius * radius);
-}
-
-void Circle::Draw()
-{
-	lines->DrawCircle(pos,radius,colour);
+	lines->DrawCircle(pos, radius, colour);
 }

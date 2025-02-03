@@ -3,17 +3,14 @@
 #include "PhysicsObject.h"
 #include "Vec2.h"
 
-class Circle : PhysicsObject
+class Circle : public PhysicsObject
 {
 public:
 
-	Circle();
+	float radius;
+
 	Circle(Vec2 _pos, float _radius);
 
-	void Draw();
+	virtual void Draw(LineRenderer* lines) const override;
 
-private:
-
-	float radius;
-	
 };

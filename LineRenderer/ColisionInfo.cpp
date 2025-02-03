@@ -1,12 +1,13 @@
-#include "ColisionInfo.h"
+#include "CollisionInfo.h"
+#include "Circle.h"
 
-Vec2 ColislionInfo::GetOverlapAmount(PhysicsObject& a, PhysicsObject& b)
-{
-	float separationOfSurfaces = (a.GetPos() - b.GetPos()).GetMagnitude() - a.GetSize() - b.GetSize();
-	return -separationOfSurfaces;
-}
 
-bool ColislionInfo::IsOverLapping()
+void CollisionInfo::Resolve()
 {
-	return false;
+	if (!IsOverLapping()) return;
+
+	float totalInverseMass = objectA->inverseMass + objectB->inverseMass;
+
+	objectB->pos += collisionNormal * overlapAmount * objectB->inverseMass / totalInverseMass;
+	objectA->pos -= collisionNormal * overlapAmount * objectA->inverseMass / totalInverseMass;
 }

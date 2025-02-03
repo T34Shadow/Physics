@@ -77,6 +77,9 @@
     <ClCompile Include="PhysicsEnvro.cpp">
       <Filter>Game\Source</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionFunctions.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLFWCallbacks.h">
@@ -175,7 +178,7 @@
     <ClInclude Include="LevelGrid.h">
       <Filter>Game\Header</Filter>
     </ClInclude>
-    <ClInclude Include="ColisionInfo.h">
+    <ClInclude Include="CollisionInfo.h">
       <Filter>Game\Header</Filter>
     </ClInclude>
     <ClInclude Include="CollisionFunctions.h">

@@ -6,18 +6,15 @@
 
 class LineRenderer;
 
-//This class isn't well-suited to work alongside the circle class because it doesn't
-//get defined in terms of position.
-class Box2d : PhysicsObject
+class Box2d : public PhysicsObject
 {
 public:
-	float xMin = FLT_MAX;
-	float xMax = -FLT_MAX;
-	float yMin = FLT_MAX;
-	float yMax = -FLT_MAX;
 
-	Box2d(Vec2 p1, Vec2 p2);
+	float width = 1.0f;
+	float height = 1.0f;
 
-	void Draw(LineRenderer* lines) const;
+	Box2d(Vec2 _pos, float w, float h);
+
+	virtual void Draw(LineRenderer* lines) const override;
 
 };

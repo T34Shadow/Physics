@@ -10,7 +10,7 @@ DotClicker::DotClicker()
 
 void DotClicker::Initialise()
 {
-
+	
 }
 
 void DotClicker::Update(float delta)

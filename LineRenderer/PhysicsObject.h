@@ -1,36 +1,23 @@
 #pragma once
-
-#include "Application.h"
-#include "Maths.h"
+#include "Colour.h"
+#include "Vec2.h"
 
 class LineRenderer;
 
-class PhysicsObject
+class PhysicsObject 
 {
-private:
-
-protected:
-
-	Vec2 pos;
-	float inverseMass;	
 
 public:
 
-	Colour colour;
+	Vec2 pos;
 	Vec2 vel;
 	Vec2 acc;
+	float inverseMass;	
+	Colour colour;
 
 	LineRenderer* lines = nullptr;
 
-	PhysicsObject();
-	PhysicsObject(Vec2 _pos, float _inverseMass);
+	PhysicsObject(Vec2 _pos);
 
-	void Update(float delta);
-	virtual void Draw() =0;
-
-	Vec2 GetPos() { return pos; }
-	float GetInverseMass() { return inverseMass; }
-
-
-
+	virtual void Draw(LineRenderer* lines) const =0;
 };
