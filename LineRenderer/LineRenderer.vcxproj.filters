@@ -80,6 +80,9 @@
     <ClCompile Include="CollisionFunctions.cpp">
       <Filter>Game\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLFWCallbacks.h">
@@ -189,6 +192,9 @@
     </ClInclude>
     <ClInclude Include="PhysicsEnvro.h">
       <Filter>Game\Examples</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Game\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,6 @@
 #pragma once
 
-#include <float.h>
 #include "PhysicsObject.h"
-#include "Vec2.h"
 
 class LineRenderer;
 

@@ -10,4 +10,7 @@ void CollisionInfo::Resolve()
 
 	objectB->pos += collisionNormal * overlapAmount * objectB->inverseMass / totalInverseMass;
 	objectA->pos -= collisionNormal * overlapAmount * objectA->inverseMass / totalInverseMass;
+
+
+
 }

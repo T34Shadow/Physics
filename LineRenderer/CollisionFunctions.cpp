@@ -1,4 +1,5 @@
 #include "CollisionFunctions.h"
+#include "Maths.h"
 
 CollisionInfo GetOverlap(PhysicsObject* a, PhysicsObject* b)
 {
@@ -15,6 +16,11 @@ CollisionInfo GetOverlap(PhysicsObject* a, PhysicsObject* b)
         {
             return OverlapBoxToCircle(boxB, circleA);
         }
+        //Plane* planeB = dynamic_cast<Plane*>(b);
+        //if (planeB != nullptr)
+        //{
+        //    return OverlapCircleToPlane(circleA, planeB);
+        //}
     }
 
     Box2d* boxA = dynamic_cast<Box2d*>(a);
@@ -31,6 +37,11 @@ CollisionInfo GetOverlap(PhysicsObject* a, PhysicsObject* b)
         {
             return OverlapBoxToBox(boxA, boxB);
         }
+        //Plane* planeB = dynamic_cast<Plane*>(b);
+        //if (planeB != nullptr)
+        //{
+        //    return OverlapBox2dToPlane(boxA, planeB);
+        //}
     }
 
     return CollisionInfo();
@@ -102,29 +113,39 @@ CollisionInfo OverlapBoxToCircle(Box2d* a, Circle* b)
     float aMinY = a->pos.y - a->height / 2.0f;
     float aMaxY = a->pos.y + a->height / 2.0f;
 
-    Vec2 closestPoint;
-    if (b->pos.x > aMaxX && b->pos.y > aMaxY)
-    {
-        closestPoint.x = aMaxX;
-        closestPoint.y = aMaxY;
-    }
-    else if (b->pos.x < aMinX && b->pos.y < aMinY)
-    {
-        closestPoint.x = aMinX;
-        closestPoint.y = aMinY;
-    }
-    else
-    {
-        closestPoint.x = b->pos.x;
-        closestPoint.y = b->pos.y;
-    }
+    Vec2 closestPoint(Clamp(b->pos.x, aMinX, aMaxX), Clamp(b->pos.y, aMinY, aMaxY));
 
     CollisionInfo returnVal;
     returnVal.objectA = a;
     returnVal.objectB = b;    
 
-    returnVal.overlapAmount;
-    returnVal.collisionNormal;
+    Vec2 centreDisplacement = b->pos - closestPoint;
+    float distance = centreDisplacement.GetMagnitude();
+    float separationOfSurfaces = distance - b->radius;
+
+    returnVal.overlapAmount = -separationOfSurfaces;
+    returnVal.collisionNormal = centreDisplacement / distance;
 
     return returnVal;
 }
+
+CollisionInfo OverlapCircleToPlane(Circle* a, Plane* b)
+{
+   // float dotProduct = Dot(testPlane02->normal, cursorPos);
+   // lines->DrawCircle(cursorPos, 0.3f, dotProduct < testPlane02->displacement + 0.3f ? Colour::RED : Colour::WHITE);
+    CollisionInfo returnVal;
+
+    float dotProduct = Dot(b->normal, a->pos);
+    returnVal.overlapAmount = a->radius - dotProduct;
+    returnVal.collisionNormal = b->normal.Normalise();
+    return returnVal;
+}
+
+CollisionInfo OverlapBox2dToPlane(Box2d* a, Plane* b)
+{
+    CollisionInfo returnVal;
+    return returnVal;
+}
+
+
+

@@ -23,5 +23,18 @@ void Example::Update(float delta)
 {
 	//Everything that your program does every frame should go here.
 	//This includes rendering done with the line renderer!
+	pos += vel * delta;
+	vel += acc * delta;
+
+	if (leftMouseDown)
+	{
+		acc = cursorPos;
+	}
+
+	lines->DrawCircle(pos, 0.3f, Colour::RED);
+	lines->DrawLineWithArrow(pos, pos + vel, Colour::GREEN);
+	lines->DrawLineWithArrow(Vec2(), acc, Colour::BLUE);
+
+
 }
 

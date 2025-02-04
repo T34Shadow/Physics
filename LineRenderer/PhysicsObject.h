@@ -11,7 +11,10 @@ public:
 
 	Vec2 pos;
 	Vec2 vel;
-	Vec2 acc;
+	
+	Vec2 forceAccumulator;
+	//Vec2 acc;
+
 	float inverseMass;	
 	Colour colour;
 
@@ -19,5 +22,9 @@ public:
 
 	PhysicsObject(Vec2 _pos);
 
+	void Update(float _delta);
 	virtual void Draw(LineRenderer* lines) const =0;
+
+	void AddForce();
+	void AddImpules();
 };
