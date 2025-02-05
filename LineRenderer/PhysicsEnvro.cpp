@@ -12,7 +12,7 @@
 
 PhysicsEnvro::PhysicsEnvro()
 {
-	worldSize = 10;
+	worldSize = 30;
 	appInfo.grid.extent = worldSize;
 	//appInfo.grid.show = false;
 	appInfo.grid.unit = 1;
@@ -30,8 +30,8 @@ void PhysicsEnvro::Initialise()
 	worldBoarders[2]=(new Plane(Vec2(0, 1), -worldSize, Colour::RED));
 	worldBoarders[3]=(new Plane(Vec2(-1, 0), -worldSize, Colour::RED));
 
-	//physicsObjects.push_back(new Box2d (Vec2(0,0), 1.0f,1.0f));
-	physicsObjects.push_back(new Circle (Vec2(0,0), 1));
+	physicsObjects.push_back(new Box2d (Vec2(0,0), 1.0f,1.0f));
+	//physicsObjects.push_back(new Circle (Vec2(0,0), 1));
 	//make number of circles into the physicsObjects vector 
 	for (int i = 1; i < numberOfCircles; i++)
 	{
@@ -56,7 +56,7 @@ void PhysicsEnvro::Update(float delta)
 {
 	//PHYSICS UPDATE
 	//-----------------------------------------------------------------------------
-	//physicsObjects[0]->pos = cursorPos;
+	physicsObjects[0]->pos = cursorPos;
 	for (int i = 0; i < 100; i++)
 	{
 		for (PhysicsObject* thisObject : physicsObjects)

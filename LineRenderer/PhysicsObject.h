@@ -10,7 +10,7 @@ class PhysicsObject
 public:
 
 	Vec2 pos;
-	Vec2 vel{ 0.0f,-0.1f };
+	Vec2 vel;
 	
 	Vec2 forceAccumulator;
 	//Vec2 acc;

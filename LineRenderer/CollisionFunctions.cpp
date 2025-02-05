@@ -151,9 +151,23 @@ CollisionInfo OverlapBox2dToPlane(Box2d* a, Plane* b)
     returnVal.objectA = a;
     returnVal.objectB = b;
 
-    float dotProduct = Dot(-b->normal, a->pos);
+    float aMinX = a->pos.x - a->width / 2.0f;
+    float aMaxX = a->pos.x + a->width / 2.0f;
 
-    returnVal.overlapAmount = dotProduct + (a->width * a->height) + b->displacement;
+    float aMinY = a->pos.y - a->height / 2.0f;
+    float aMaxY = a->pos.y + a->height / 2.0f;
+
+    Vec2 topRight(aMaxX, aMaxY);
+    Vec2 topLeft(aMinX, aMaxY);
+    Vec2 bottomRight(aMaxX, aMinY);
+    Vec2 bottomLeft(aMinX, aMinY);
+
+    //check for when these points are behind the plane using dot on each point. 
+    //get the most deep point behind the plane for the overlapAmount.
+
+    float dotProduct = Dot(-b->normal, a->pos);
+    //
+    //returnVal.overlapAmount = dotProduct + (a->width * a->height) + b->displacement;
     returnVal.collisionNormal = -b->normal;
     return returnVal;
 }
