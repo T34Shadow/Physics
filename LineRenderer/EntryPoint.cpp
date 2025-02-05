@@ -3,6 +3,7 @@
 //Include the necessary header file here for your game type
 #include "PhysicsEnvro.h"
 #include "Example.h"
+#include "DotClicker.h"
 
 int main()
 {

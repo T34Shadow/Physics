@@ -190,10 +190,10 @@
     <ClInclude Include="Circle.h">
       <Filter>Game\Header</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsEnvro.h">
-      <Filter>Game\Examples</Filter>
-    </ClInclude>
     <ClInclude Include="Plane.h">
+      <Filter>Game\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsEnvro.h">
       <Filter>Game\Header</Filter>
     </ClInclude>
   </ItemGroup>

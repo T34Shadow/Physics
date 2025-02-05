@@ -10,12 +10,8 @@ private:
 	//Any data that should persist for the duration of your program,
 	//declare it here.
 	std::vector<PhysicsObject*> physicsObjects;
-	LineRenderer* Lines;
-	Plane* testPlane01;
-	Plane* testPlane02;
-	Plane* testPlane03;
-	Plane* testPlane04;
-
+	std::vector<Plane*> worldBoarders{ 4 };
+	float worldSize;
 
 
 public:

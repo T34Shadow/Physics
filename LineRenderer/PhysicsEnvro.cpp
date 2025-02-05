@@ -12,9 +12,11 @@
 
 PhysicsEnvro::PhysicsEnvro()
 {
-	Lines = lines;
-
-
+	worldSize = 10;
+	appInfo.grid.extent = worldSize;
+	//appInfo.grid.show = false;
+	appInfo.grid.unit = 1;
+	appInfo.appName = "PHYSICS ENGINE";
 }
 
 void PhysicsEnvro::Initialise()
@@ -22,17 +24,11 @@ void PhysicsEnvro::Initialise()
 	int numberOfCircles = 5;
 	int numberOfBoxes = 5;
 	int numberOfPhysicsObjects = numberOfCircles + numberOfBoxes +2;
-
-	testPlane01 = new Plane(Vec2(0, 1), -15);
-	testPlane02 = new Plane(Vec2(0, -1), -15);
-	testPlane03 = new Plane(Vec2(1, 0), -15);
-	testPlane04 = new Plane(Vec2(-1, 0), -15);
-
-	testPlane01->colour = Colour::RED;
-	testPlane02->colour = Colour::GREEN;
-	testPlane03->colour = Colour::BLUE;
-	testPlane04->colour = Colour::YELLOW;
-
+		
+	worldBoarders[0]=(new Plane(Vec2(0, -1), -worldSize, Colour::RED));
+	worldBoarders[1]=(new Plane(Vec2(1, 0), -worldSize, Colour::RED));
+	worldBoarders[2]=(new Plane(Vec2(0, 1), -worldSize, Colour::RED));
+	worldBoarders[3]=(new Plane(Vec2(-1, 0), -worldSize, Colour::RED));
 
 	//physicsObjects.push_back(new Box2d (Vec2(0,0), 1.0f,1.0f));
 	physicsObjects.push_back(new Circle (Vec2(0,0), 1));
@@ -54,46 +50,53 @@ void PhysicsEnvro::Initialise()
 	
 		physicsObjects.push_back(new Box2d(randPos,0.5f,0.5f));
 	}
-	physicsObjects.push_back(testPlane01);
-	physicsObjects.push_back(testPlane02);
-	physicsObjects.push_back(testPlane03);
-	physicsObjects.push_back(testPlane04);
 }
 
 void PhysicsEnvro::Update(float delta)
 {
 	//PHYSICS UPDATE
 	//-----------------------------------------------------------------------------
-	physicsObjects[0]->pos = cursorPos;
-	
-	std::vector<CollisionInfo> collisions;
-	for (int i = 0; i < physicsObjects.size(); i++)
+	//physicsObjects[0]->pos = cursorPos;
+	for (int i = 0; i < 100; i++)
 	{
-		for (int j = i + 1; j < physicsObjects.size(); j++)
+		for (PhysicsObject* thisObject : physicsObjects)
 		{
-			CollisionInfo thisHit = GetOverlap(physicsObjects[i], physicsObjects[j]);
-			if (thisHit.IsOverLapping()) collisions.push_back(thisHit);
+			thisObject->Update(delta);
 		}
+		std::vector<CollisionInfo> collisions;
+		
+		for (int i = 0; i < physicsObjects.size(); i++)
+		{
+			for (int j = i + 1; j < physicsObjects.size(); j++)
+			{
+				CollisionInfo thisHit = GetOverlap(physicsObjects[i], physicsObjects[j]);
+				if (thisHit.IsOverLapping()) collisions.push_back(thisHit);
+			}
+			for (int j = 0; j < worldBoarders.size(); j++)
+			{
+				CollisionInfo thisHit = GetOverlap(physicsObjects[i], worldBoarders[j]);
+				if (thisHit.IsOverLapping()) collisions.push_back(thisHit);
+			}
+		}
+		for (CollisionInfo& thisHit : collisions)
+		{
+			thisHit.Resolve();
+		}	
+
 	}
 	
-	for (PhysicsObject* thisObject : physicsObjects)
-	{
-		thisObject->Update(delta);
-	}
-
-	for (CollisionInfo& thisHit : collisions)
-	{
-		thisHit.Resolve();
-	}	
 
 	//DRAW UPDATE
 	//-----------------------------------------------------------------------------
-
-	for (int i = 0; i < physicsObjects.size(); i++)
-	{
-		physicsObjects[i]->Draw(lines);
-	}
 	
+	for (PhysicsObject* thisObject : physicsObjects)
+	{
+		thisObject->Draw(lines);
+	}
+	for (Plane* thisObject : worldBoarders)
+	{
+		thisObject->Draw(lines);
+	}
 }
 
 
