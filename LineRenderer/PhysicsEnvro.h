@@ -12,7 +12,7 @@ private:
 	std::vector<PhysicsObject*> physicsObjects;
 	std::vector<Plane*> worldBoarders{ 4 };
 	float worldSize;
-
+	Vec2 previousPos;
 
 public:
 	PhysicsEnvro();

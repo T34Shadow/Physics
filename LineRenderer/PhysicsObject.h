@@ -13,7 +13,6 @@ public:
 	Vec2 vel;
 	
 	Vec2 forceAccumulator;
-	//Vec2 acc;
 
 	float inverseMass;	
 	Colour colour;
@@ -25,6 +24,6 @@ public:
 	void Update(float _delta);
 	virtual void Draw(LineRenderer* lines) const =0;
 
-	void AddForce();
-	void AddImpules();
+	void AddForce(Vec2 force);
+	void AddImpules(Vec2 impulse);
 };
