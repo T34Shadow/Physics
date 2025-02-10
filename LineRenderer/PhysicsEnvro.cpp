@@ -12,7 +12,7 @@
 
 PhysicsEnvro::PhysicsEnvro()
 {
-	worldSize = 10;
+	worldSize = 100;
 	appInfo.grid.extent = worldSize;
 	appInfo.grid.show = false;
 	appInfo.grid.unit = 1;
@@ -21,36 +21,11 @@ PhysicsEnvro::PhysicsEnvro()
 
 void PhysicsEnvro::Initialise()
 {
-	int numberOfCircles = 5;
-	int numberOfBoxes = 5;
-	int numberOfPhysicsObjects = numberOfCircles + numberOfBoxes +2;
-		
 	worldBoarders[0]=(new Plane(Vec2(0, -1), -worldSize, Colour::RED));
 	worldBoarders[1]=(new Plane(Vec2(1, 0), -worldSize, Colour::RED));
 	worldBoarders[2]=(new Plane(Vec2(0, 1), -worldSize, Colour::RED));
 	worldBoarders[3]=(new Plane(Vec2(-1, 0), -worldSize, Colour::RED));
 
-	//physicsObjects.push_back(new Box2d (Vec2(0,0), 1.0f,1.0f));
-	physicsObjects.push_back(new Circle (Vec2(0,0), 1));
-	//make number of circles into the physicsObjects vector 
-	for (int i = 1; i < 3; i++)
-	{
-		Vec2 randPos;
-		randPos.x = (rand() / (float)RAND_MAX) * 1;
-		randPos.y = (rand() / (float)RAND_MAX) * 1;
-	
-		physicsObjects.push_back(new Circle(randPos, 3.0f));
-	}
-	//make number of boxes into the physicsObjects vector 
-	//for (int i = numberOfCircles+1; i < numberOfPhysicsObjects; i++)
-	//{
-	//	Vec2 randPos;
-	//	randPos.x = (rand() / (float)RAND_MAX) * 10;
-	//	randPos.y = (rand() / (float)RAND_MAX) * 10;
-	//
-	//	physicsObjects.push_back(new Box2d(randPos,0.5f,0.5f));
-	//}
-	//previousPos = cursorPos;
 }
 
 void PhysicsEnvro::Update(float delta)
