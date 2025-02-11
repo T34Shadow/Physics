@@ -8,6 +8,12 @@ Box2d::Box2d(Vec2 _pos, float w, float h) : PhysicsObject(_pos), width(w), heigh
 	inverseMass = 1.0f / (width * height);
 }
 
+Box2d::Box2d(Vec2 _pos, float w, float h, Colour _colour) : PhysicsObject(_pos), width(w), height(h)
+{
+	inverseMass = 1.0f / (width * height);
+	colour = _colour;
+}
+
 void Box2d::Draw(LineRenderer* lines) const
 {
 	Vec2 topLeft = pos + Vec2(-width, height) * 0.5f;

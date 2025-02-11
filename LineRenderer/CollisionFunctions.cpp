@@ -122,14 +122,21 @@ CollisionInfo OverlapBoxToCircle(Box2d* a, Circle* b)
     returnVal.objectA = a;
     returnVal.objectB = b;    
 
-    Vec2 centreDisplacement = b->pos - closestPoint;
-    float distance = centreDisplacement.GetMagnitude();
-    float separationOfSurfaces = distance - b->radius;
+    if (closestPoint.x != 0 && closestPoint.y != 0)
+    {
+        Vec2 centreDisplacement = b->pos - closestPoint;
+        float distance = centreDisplacement.GetMagnitude();
+        float separationOfSurfaces = distance - b->radius;
 
-    returnVal.overlapAmount = -separationOfSurfaces;
-    returnVal.collisionNormal = centreDisplacement / distance;
+        returnVal.overlapAmount = -separationOfSurfaces;
+        returnVal.collisionNormal = centreDisplacement / distance;
 
-    return returnVal;
+        return returnVal;
+    }
+    else
+    {
+        return returnVal;
+    }
 }
 
 CollisionInfo OverlapCircleToPlane(Circle* a, Plane* b)

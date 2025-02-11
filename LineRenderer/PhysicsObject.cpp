@@ -1,8 +1,17 @@
 #include "PhysicsObject.h"
 
+PhysicsObject::PhysicsObject()
+{
+	isTrigger = false;
+}
+
 PhysicsObject::PhysicsObject(Vec2 _pos) : pos(_pos)
 {
+	isTrigger = false;
+}
 
+PhysicsObject::PhysicsObject(Vec2 _pos, bool _isTrigger) : pos(_pos), isTrigger(_isTrigger)
+{
 }
 
 void PhysicsObject::Update(float _delta)

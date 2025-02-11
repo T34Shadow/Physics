@@ -12,6 +12,7 @@ public:
 	float height = 1.0f;
 
 	Box2d(Vec2 _pos, float w, float h);
+	Box2d(Vec2 _pos, float w, float h, Colour _colour);
 
 	virtual void Draw(LineRenderer* lines) const override;
 

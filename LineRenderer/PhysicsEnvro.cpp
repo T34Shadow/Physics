@@ -26,15 +26,50 @@ void PhysicsEnvro::Initialise()
 	worldBoarders[2]=(new Plane(Vec2(0, 1), -worldSize, Colour::RED));
 	worldBoarders[3]=(new Plane(Vec2(-1, 0), -worldSize, Colour::RED));
 
+	objectHeld = false;
+	physicsObjects.push_back(new Box2d(Vec2(0, 50), 3, 3, Colour::CYAN));
+
+	for (int i = 0; i < 10; i++)
+	{
+		Vec2 randPos;
+		randPos.x = (rand() / (float)RAND_MAX) * 50;
+		randPos.y = (rand() / (float)RAND_MAX) * 50;
+		physicsObjects.push_back(new Circle(randPos, 1.7f));
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		Vec2 randPos;
+		randPos.x = (rand() / (float)RAND_MAX) * 50;
+		randPos.y = (rand() / (float)RAND_MAX) * 50;
+		physicsObjects.push_back(new Box2d(randPos, 1.7,1.7));
+	}
+	windTunnels.push_back(new Box2d(Vec2(95.0f, -85.0f), 10, 30, Colour::MAGENTA));
+	windTunnels.push_back(new Box2d(Vec2(-95.0f, -85.0f), 10, 30,Colour::MAGENTA));
+	windTunnels[0]->isTrigger = true;
+	windTunnels[1]->isTrigger = true;
+}
+
+void PhysicsEnvro::OnRightClick()
+{
+	objectHeld = true;
+}
+
+void PhysicsEnvro::OnRightRelease()
+{
+	objectHeld = false;
 }
 
 void PhysicsEnvro::Update(float delta)
 {
 	//PHYSICS UPDATE
 	//-----------------------------------------------------------------------------
-	//physicsObjects[0]->vel = (previousPos - cursorPos) / delta;
-	//physicsObjects[0]->pos = cursorPos;
-	//previousPos = cursorPos;
+	
+	if (objectHeld)
+	{
+		physicsObjects[0]->vel = (previousPos - cursorPos) / delta;
+		physicsObjects[0]->pos = cursorPos;
+		previousPos = cursorPos;
+	}
 	
 	for (PhysicsObject* thisObject : physicsObjects)
 	{
@@ -52,6 +87,11 @@ void PhysicsEnvro::Update(float delta)
 		for (int j = 0; j < worldBoarders.size(); j++)
 		{
 			CollisionInfo thisHit = GetOverlap(physicsObjects[i], worldBoarders[j]);
+			if (thisHit.IsOverLapping()) collisions.push_back(thisHit);
+		}
+		for (int j = 0; j < windTunnels.size(); j++)
+		{
+			CollisionInfo thisHit = GetOverlap(physicsObjects[i], windTunnels[j]);
 			if (thisHit.IsOverLapping()) collisions.push_back(thisHit);
 		}
 	}
@@ -72,6 +112,10 @@ void PhysicsEnvro::Update(float delta)
 		thisObject->Draw(lines);
 	}
 	for (Plane* thisObject : worldBoarders)
+	{
+		thisObject->Draw(lines);
+	}
+	for (PhysicsObject* thisObject : windTunnels)
 	{
 		thisObject->Draw(lines);
 	}
