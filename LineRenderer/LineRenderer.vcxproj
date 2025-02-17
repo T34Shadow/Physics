@@ -165,6 +165,7 @@
     <ClCompile Include="DotClicker.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="Example.cpp" />
+    <ClCompile Include="ForceField.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLFWCallbacks.cpp" />
     <ClCompile Include="LineRenderer.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="Colour.h" />
     <ClInclude Include="DotClicker.h" />
     <ClInclude Include="Example.h" />
+    <ClInclude Include="ForceField.h" />
     <ClInclude Include="glad.h" />
     <ClInclude Include="GLFWCallbacks.h" />
     <ClInclude Include="Graphics.h" />

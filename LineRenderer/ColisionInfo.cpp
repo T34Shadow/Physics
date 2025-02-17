@@ -6,10 +6,6 @@ void CollisionInfo::Resolve()
 {
 	if (!IsOverLapping()) return;
 
-	if (objectA->isTrigger)
-	{
-		objectB->AddImpules(Vec2(0, 100));
-	}
 	float totalInverseMass = objectA->inverseMass + objectB->inverseMass;
 
 	objectB->pos += collisionNormal * overlapAmount * objectB->inverseMass / totalInverseMass;

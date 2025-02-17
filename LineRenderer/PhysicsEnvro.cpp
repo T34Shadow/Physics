@@ -3,6 +3,7 @@
 #include "CollisionFunctions.h"
 #include "Box2d.h"
 #include "Circle.h"
+#include "ForceField.h"
 #include "Plane.h"
 
 #include "TextStream.h"
@@ -43,6 +44,7 @@ void PhysicsEnvro::Initialise()
 		randPos.y = (rand() / (float)RAND_MAX) * 50;
 		physicsObjects.push_back(new Box2d(randPos, 1.7,1.7));
 	}
+	windTunnels.push_back(new ForceField(Vec2(0.0f, -85.0f), Vec2(0.0f, 1.0f), 100.0f, 100.0f, 10.0f,Colour::MAGENTA));
 }
 
 void PhysicsEnvro::OnRightClick()

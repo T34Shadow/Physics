@@ -23,6 +23,11 @@ CollisionInfo GetOverlap(PhysicsObject* a, PhysicsObject* b)
         {
             return OverlapCircleToPlane(circleA, planeB);
         }
+        ForceField* forceFieldB = dynamic_cast<ForceField*>(b);
+        if (forceFieldB != nullptr)
+        {
+            return OverlapCircleToForceField(circleA, forceFieldB);
+        }
     }
 
     Box2d* boxA = dynamic_cast<Box2d*>(a);
@@ -43,6 +48,11 @@ CollisionInfo GetOverlap(PhysicsObject* a, PhysicsObject* b)
         if (planeB != nullptr)
         {
             return OverlapBox2dToPlane(boxA, planeB);
+        }
+        ForceField* forceFieldB = dynamic_cast<ForceField*>(b);
+        if (forceFieldB != nullptr)
+        {
+            return OverlapBox2dToForceField(boxA, forceFieldB);
         }
     }
 
@@ -187,6 +197,21 @@ CollisionInfo OverlapBox2dToPlane(Box2d* a, Plane* b)
     returnVal.collisionNormal = b->normal;
 
     return returnVal;
+}
+
+CollisionInfo OverlapCircleToForceField(Circle* a, ForceField* b)
+{
+    
+    Vec2 result = b->normalForce * b->ForceStrength;
+    a->AddForce(result);
+    return CollisionInfo();    
+}
+
+CollisionInfo OverlapBox2dToForceField(Box2d* a, ForceField* b)
+{
+    Vec2 result = b->normalForce * b->ForceStrength;
+    a->AddForce(result);
+    return CollisionInfo();
 }
 
 

@@ -83,6 +83,9 @@
     <ClCompile Include="Plane.cpp">
       <Filter>Game\Source</Filter>
     </ClCompile>
+    <ClCompile Include="ForceField.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLFWCallbacks.h">
@@ -194,6 +197,9 @@
       <Filter>Game\Header</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsEnvro.h">
+      <Filter>Game\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ForceField.h">
       <Filter>Game\Header</Filter>
     </ClInclude>
   </ItemGroup>

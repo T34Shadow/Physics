@@ -8,9 +8,10 @@ class Box2d : public PhysicsObject
 {
 public:
 
-	float width = 1.0f;
-	float height = 1.0f;
+	float width;
+	float height;
 
+	Box2d() = default;
 	Box2d(Vec2 _pos, float w, float h);
 	Box2d(Vec2 _pos, float w, float h, Colour _colour);
 
