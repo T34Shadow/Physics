@@ -148,7 +148,7 @@ CollisionInfo OverlapCircleToPlane(Circle* a, Plane* b)
     
     float dotProduct = Dot(b->normal, a->pos);
     
-    returnVal.overlapAmount = dotProduct + a->radius + b->displacement;
+    returnVal.overlapAmount = dotProduct + a->radius - b->displacement;
     returnVal.collisionNormal = b->normal;
 
     return returnVal;
@@ -176,10 +176,10 @@ CollisionInfo OverlapBox2dToPlane(Box2d* a, Plane* b)
     //get the most deep point behind the plane for the overlapAmount.
     
     std::vector<float>overlaps;
-    overlaps.push_back(Dot(b->normal, topRight) + b->displacement);
-    overlaps.push_back(Dot(b->normal, topLeft) + b->displacement);
-    overlaps.push_back(Dot(b->normal, bottomRight) + b->displacement);
-    overlaps.push_back(Dot(b->normal, bottomLeft) + b->displacement);
+    overlaps.push_back(Dot(b->normal, topRight) - b->displacement);
+    overlaps.push_back(Dot(b->normal, topLeft) - b->displacement);
+    overlaps.push_back(Dot(b->normal, bottomRight) - b->displacement);
+    overlaps.push_back(Dot(b->normal, bottomLeft) - b->displacement);
 
     std::sort(overlaps.begin(), overlaps.end());
 

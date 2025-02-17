@@ -11,17 +11,17 @@ public:
 
 	Vec2 pos;
 	Vec2 vel;
-	
-	Vec2 forceAccumulator;
-	bool isTrigger = false;
-	float inverseMass;	
 	Colour colour;
+	Vec2 forceAccumulator;
+	float inverseMass; // Having a inverse mass of 0 means it will be static.\
+	
+	bool isTrigger = false; //For having physics objects to trigger an event and not have a physical responce.
+	bool isStatic = false; //For having physics objects to respond to collision with a stactic object.
 
 	LineRenderer* lines = nullptr;
 
 	PhysicsObject();
 	PhysicsObject(Vec2 _pos);
-	PhysicsObject(Vec2 _pos,bool _isTrigger);
 
 	void Update(float _delta);
 	virtual void Draw(LineRenderer* lines) const =0;

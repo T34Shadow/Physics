@@ -1,8 +1,9 @@
 #include "Plane.h"
 #include "LineRenderer.h"
 
-Plane::Plane(Vec2 _normal, float _displacement) : PhysicsObject(_normal), displacement(_displacement)
+Plane::Plane(Vec2 _normal, float _displacement) : PhysicsObject(_normal)
 {
+	displacement = _displacement;
 	normal = _normal;
 	inverseMass = 0;
 	vel = Vec2(0,0);
@@ -12,10 +13,12 @@ Plane::Plane(Vec2 _normal, float _displacement) : PhysicsObject(_normal), displa
 
 }
 
-Plane::Plane(Vec2 _normal, float _displacement, Colour _colour) : PhysicsObject(_normal), displacement(_displacement), colour(_colour)
+Plane::Plane(Vec2 _normal, float _displacement, Colour _colour) : PhysicsObject(_normal)
 {
+	displacement = _displacement;
 	normal = _normal;
 	inverseMass = 0;
+	colour = _colour;
 	vel = Vec2(0, 0);
 	//acc = Vec2(0, 0);
 

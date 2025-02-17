@@ -21,10 +21,10 @@ PhysicsEnvro::PhysicsEnvro()
 
 void PhysicsEnvro::Initialise()
 {
-	worldBoarders[0]=(new Plane(Vec2(0, -1), -worldSize, Colour::RED));
-	worldBoarders[1]=(new Plane(Vec2(1, 0), -worldSize, Colour::RED));
-	worldBoarders[2]=(new Plane(Vec2(0, 1), -worldSize, Colour::RED));
-	worldBoarders[3]=(new Plane(Vec2(-1, 0), -worldSize, Colour::RED));
+	worldBoarders[0]=(new Plane(Vec2(0, -1), worldSize, Colour::RED));
+	worldBoarders[1]=(new Plane(Vec2(1, 0), worldSize, Colour::BLUE));
+	worldBoarders[2]=(new Plane(Vec2(0, 1), worldSize, Colour::GREEN));
+	worldBoarders[3]=(new Plane(Vec2(-1, 0), worldSize, Colour::YELLOW));
 
 	objectHeld = false;
 	physicsObjects.push_back(new Box2d(Vec2(0, 50), 3, 3, Colour::CYAN));
@@ -43,10 +43,6 @@ void PhysicsEnvro::Initialise()
 		randPos.y = (rand() / (float)RAND_MAX) * 50;
 		physicsObjects.push_back(new Box2d(randPos, 1.7,1.7));
 	}
-	windTunnels.push_back(new Box2d(Vec2(95.0f, -85.0f), 10, 30, Colour::MAGENTA));
-	windTunnels.push_back(new Box2d(Vec2(-95.0f, -85.0f), 10, 30,Colour::MAGENTA));
-	windTunnels[0]->isTrigger = true;
-	windTunnels[1]->isTrigger = true;
 }
 
 void PhysicsEnvro::OnRightClick()
