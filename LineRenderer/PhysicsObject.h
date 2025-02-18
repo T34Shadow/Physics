@@ -13,8 +13,8 @@ public:
 	Vec2 vel;
 	Colour colour;
 	Vec2 forceAccumulator;
-	float inverseMass; // Having a inverse mass of 0 means it will be static.\
-	
+	float inverseMass; // Having a inverse mass of 0 means it will be static.
+		
 	//bool isTrigger = false; //For having physics objects to trigger an event and not have a physical responce.
 	//bool isStatic = false; //For having physics objects to respond to collision with a stactic object.
 

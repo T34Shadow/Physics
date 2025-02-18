@@ -1,7 +1,7 @@
 #include "ForceField.h"
 #include "LineRenderer.h"
 
-ForceField::ForceField(Vec2 _pos, Vec2 _normalForce, float _forceStrength, float w, float h)
+ForceField::ForceField(Vec2 _pos, Vec2 _normalForce, float _forceStrength, float w, float h) 
 {
 	pos = _pos;
 	normalForce = _normalForce;

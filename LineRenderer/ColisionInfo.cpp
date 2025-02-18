@@ -16,6 +16,6 @@ void CollisionInfo::Resolve()
 	float j = (1 + elasticity) * Dot((objectA->vel - objectB->vel), collisionNormal) / totalInverseMass;
 
 	objectA->AddImpules(-collisionNormal * j);
-	objectB->AddImpules(collisionNormal * j);
+	objectB->AddImpules(collisionNormal * j);	
 
 }

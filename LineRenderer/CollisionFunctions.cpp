@@ -127,7 +127,6 @@ CollisionInfo OverlapBoxToCircle(Box2d* a, Circle* b)
 
     Vec2 closestPoint(Clamp(b->pos.x, aMinX, aMaxX), Clamp(b->pos.y, aMinY, aMaxY));
     
-
     CollisionInfo returnVal;
     returnVal.objectA = a;
     returnVal.objectB = b;    
@@ -135,8 +134,14 @@ CollisionInfo OverlapBoxToCircle(Box2d* a, Circle* b)
     if (closestPoint.x != 0 && closestPoint.y != 0)
     {
         Vec2 centreDisplacement = b->pos - closestPoint;
+
         float distance = centreDisplacement.GetMagnitude();
         float separationOfSurfaces = distance - b->radius;
+
+        if (distance <= 0)
+        {            
+            return returnVal;
+        }
 
         returnVal.overlapAmount = -separationOfSurfaces;
         returnVal.collisionNormal = centreDisplacement / distance;
@@ -201,16 +206,66 @@ CollisionInfo OverlapBox2dToPlane(Box2d* a, Plane* b)
 
 CollisionInfo OverlapCircleToForceField(Circle* a, ForceField* b)
 {
-    
-    Vec2 result = b->normalForce * b->ForceStrength;
-    a->AddForce(result);
-    return CollisionInfo();    
+    float aMinX = b->pos.x - b->width / 2.0f;
+    float aMaxX = b->pos.x + b->width / 2.0f;
+
+    float aMinY = b->pos.y - b->height / 2.0f;
+    float aMaxY = b->pos.y + b->height / 2.0f;
+
+    Vec2 closestPoint(Clamp(a->pos.x, aMinX, aMaxX), Clamp(a->pos.y, aMinY, aMaxY));
+
+    if (closestPoint.x != 0 && closestPoint.y != 0)
+    {
+        Vec2 centreDisplacement = a->pos - closestPoint;
+
+        float distance = centreDisplacement.GetMagnitude();
+        float separationOfSurfaces = distance - a->radius;
+
+        if (separationOfSurfaces <= 0)
+        {
+            a->AddForce(b->normalForce * b->ForceStrength);
+        }
+    }
+    return CollisionInfo();
 }
 
 CollisionInfo OverlapBox2dToForceField(Box2d* a, ForceField* b)
 {
-    Vec2 result = b->normalForce * b->ForceStrength;
-    a->AddForce(result);
+    float aMinX = a->pos.x - a->width / 2.0f;
+    float aMaxX = a->pos.x + a->width / 2.0f;
+    float bMinX = b->pos.x - b->width / 2.0f;
+    float bMaxX = b->pos.x + b->width / 2.0f;
+
+    float aMinY = a->pos.y - a->height / 2.0f;
+    float aMaxY = a->pos.y + a->height / 2.0f;
+    float bMinY = b->pos.y - b->height / 2.0f;
+    float bMaxY = b->pos.y + b->height / 2.0f;
+
+    float overlapDepths[4];
+    Vec2 overlapNormals[4];
+
+    overlapDepths[0] = bMaxX - aMinX;
+    overlapNormals[0] = Vec2(-1, 0);
+    overlapDepths[1] = aMaxX - bMinX;
+    overlapNormals[1] = Vec2(1, 0);
+
+    overlapDepths[2] = bMaxY - aMinY;
+    overlapNormals[2] = Vec2(0, -1);
+    overlapDepths[3] = aMaxY - bMinY;
+    overlapNormals[3] = Vec2(0, 1);
+
+    int smallestIndex = 0;
+    for (int i = 1; i < 4; i++)
+    {
+        if (overlapDepths[i] < overlapDepths[smallestIndex])
+        {
+            smallestIndex = i;
+        }
+    }
+    if (overlapDepths[smallestIndex] >= 0)
+    {
+        a->AddForce(b->normalForce * b->ForceStrength);
+    }
     return CollisionInfo();
 }
 

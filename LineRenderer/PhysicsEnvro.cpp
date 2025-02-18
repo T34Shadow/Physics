@@ -28,7 +28,7 @@ void PhysicsEnvro::Initialise()
 	worldBoarders[3]=(new Plane(Vec2(-1, 0), worldSize, Colour::YELLOW));
 
 	objectHeld = false;
-	physicsObjects.push_back(new Box2d(Vec2(0, 50), 3, 3, Colour::CYAN));
+	physicsObjects.push_back(new Box2d(Vec2(0, 50), 5, 5, Colour::CYAN));
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -44,7 +44,10 @@ void PhysicsEnvro::Initialise()
 		randPos.y = (rand() / (float)RAND_MAX) * 50;
 		physicsObjects.push_back(new Box2d(randPos, 1.7,1.7));
 	}
-	windTunnels.push_back(new ForceField(Vec2(0.0f, -85.0f), Vec2(0.0f, 1.0f), 100.0f, 100.0f, 10.0f,Colour::MAGENTA));
+	windTunnels.push_back(new ForceField(Vec2(0.0f, -85.0f), Vec2(0.0f, 1.0f), 1000.0f, 100.0f, 10.0f,Colour::MAGENTA));
+	windTunnels.push_back(new ForceField(Vec2(0.0f, 85.0f), Vec2(0.0f, -1.0f), 1000.0f, 100.0f, 10.0f,Colour::MAGENTA));
+	windTunnels.push_back(new ForceField(Vec2(85.0f, 0.0f), Vec2(-1.0f, 0.0f), 1000.0f, 10.0f, 100.0f,Colour::MAGENTA));
+	windTunnels.push_back(new ForceField(Vec2(-85.0f, 0.0f), Vec2(1.0f, 0.0f), 1000.0f, 10.0f, 100.0f,Colour::MAGENTA));
 }
 
 void PhysicsEnvro::OnRightClick()

@@ -3,7 +3,7 @@
 
 class LineRenderer;
 
-class ForceField : public Box2d
+class ForceField : public PhysicsObject
 {
 public:
 
