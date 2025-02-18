@@ -8,9 +8,9 @@ class Example : public Application
 private:
 	//Any data that should persist for the duration of your program,
 	//declare it here.
-	Vec2 pos{ 4,4 };
-	Vec2 vel{ 4,7 };
-	Vec2 acc{0, -1.81 };
+	Vec2 pos{ 4.0f,4.0f };
+	Vec2 vel{ 4.0f,7.0f };
+	Vec2 acc{0.0f, -1.81f };
 
 public:
 	Example();

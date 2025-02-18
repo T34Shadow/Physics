@@ -11,7 +11,7 @@ PhysicsObject::PhysicsObject(Vec2 _pos) :pos(_pos)
 
 void PhysicsObject::Update(float _delta)
 {
-	Vec2 gravity{ 0,-9.81f };
+	Vec2 gravity{ 0.0f,-9.81f };
 	Vec2 acc = gravity + forceAccumulator * inverseMass;
 
 	pos += vel * _delta;

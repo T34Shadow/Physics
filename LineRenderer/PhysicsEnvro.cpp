@@ -13,8 +13,8 @@
 
 PhysicsEnvro::PhysicsEnvro()
 {
-	worldSize = 100;
-	appInfo.grid.extent = worldSize;
+	worldSize = 100.0f;
+	appInfo.grid.extent = (int)worldSize;
 	appInfo.grid.show = false;
 	appInfo.grid.unit = 1;
 	appInfo.appName = "PHYSICS ENGINE";
@@ -28,26 +28,26 @@ void PhysicsEnvro::Initialise()
 	worldBoarders[3]=(new Plane(Vec2(-1, 0), worldSize, Colour::YELLOW));
 
 	objectHeld = false;
-	physicsObjects.push_back(new Box2d(Vec2(0, 50), 5, 5, Colour::CYAN));
+	physicsObjects.push_back(new Box2d(Vec2(0, 50), 2, 2, Colour::CYAN));
 
 	for (int i = 0; i < 10; i++)
 	{
 		Vec2 randPos;
-		randPos.x = (rand() / (float)RAND_MAX) * 50;
+		randPos.x = (rand() / (float)RAND_MAX) * 100;
 		randPos.y = (rand() / (float)RAND_MAX) * 50;
-		physicsObjects.push_back(new Circle(randPos, 1.7f));
+		physicsObjects.push_back(new Circle(randPos, 2));
 	}
 	for (int i = 0; i < 10; i++)
 	{
 		Vec2 randPos;
 		randPos.x = (rand() / (float)RAND_MAX) * 50;
-		randPos.y = (rand() / (float)RAND_MAX) * 50;
-		physicsObjects.push_back(new Box2d(randPos, 1.7,1.7));
+		randPos.y = (rand() / (float)RAND_MAX) * 100;
+		physicsObjects.push_back(new Box2d(randPos, 1.7f,1.7f));
 	}
-	windTunnels.push_back(new ForceField(Vec2(0.0f, -85.0f), Vec2(0.0f, 1.0f), 1000.0f, 100.0f, 10.0f,Colour::MAGENTA));
-	windTunnels.push_back(new ForceField(Vec2(0.0f, 85.0f), Vec2(0.0f, -1.0f), 1000.0f, 100.0f, 10.0f,Colour::MAGENTA));
-	windTunnels.push_back(new ForceField(Vec2(85.0f, 0.0f), Vec2(-1.0f, 0.0f), 1000.0f, 10.0f, 100.0f,Colour::MAGENTA));
-	windTunnels.push_back(new ForceField(Vec2(-85.0f, 0.0f), Vec2(1.0f, 0.0f), 1000.0f, 10.0f, 100.0f,Colour::MAGENTA));
+	windTunnels.push_back(new ForceField(Vec2(0.0f, -85.0f), Vec2(0.0f, 1.0f), 100.0f, 100.0f, 10.0f,Colour::MAGENTA));
+	windTunnels.push_back(new ForceField(Vec2(0.0f, 85.0f), Vec2(0.0f, -1.0f), 100.0f, 100.0f, 10.0f,Colour::MAGENTA));
+	windTunnels.push_back(new ForceField(Vec2(85.0f, 0.0f), Vec2(-1.0f, 0.0f), 100.0f, 10.0f, 100.0f,Colour::MAGENTA));
+	windTunnels.push_back(new ForceField(Vec2(-85.0f, 0.0f), Vec2(1.0f, 0.0f), 100.0f, 10.0f, 100.0f,Colour::MAGENTA));
 }
 
 void PhysicsEnvro::OnRightClick()
