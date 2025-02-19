@@ -175,13 +175,7 @@
     <ClInclude Include="TestingApp.h">
       <Filter>Game\Examples</Filter>
     </ClInclude>
-    <ClInclude Include="Stb__Image.h">
-      <Filter>Game\Header</Filter>
-    </ClInclude>
     <ClInclude Include="Box2d.h">
-      <Filter>Game\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelGrid.h">
       <Filter>Game\Header</Filter>
     </ClInclude>
     <ClInclude Include="CollisionInfo.h">

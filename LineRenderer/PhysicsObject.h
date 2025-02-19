@@ -6,8 +6,7 @@ class LineRenderer;
 
 class PhysicsObject 
 {
-
-public:
+protected:
 
 	Vec2 pos;
 	Vec2 vel;
@@ -15,11 +14,7 @@ public:
 	Vec2 forceAccumulator;
 	float inverseMass; // Having a inverse mass of 0 means it will be static.
 		
-	//bool isTrigger = false; //For having physics objects to trigger an event and not have a physical responce.
-	//bool isStatic = false; //For having physics objects to respond to collision with a stactic object.
-
-	LineRenderer* lines = nullptr;
-
+public:
 	PhysicsObject();
 	PhysicsObject(Vec2 _pos);
 
@@ -28,4 +23,10 @@ public:
 
 	void AddForce(Vec2 force);
 	void AddImpules(Vec2 impulse);
+
+	Vec2 &GetPos() { return pos ; }
+	Vec2 &GetVel() { return vel; }
+	Vec2& GetForceAcc() { return forceAccumulator; }
+	float &GetInverseMass() { return inverseMass; }
+
 };

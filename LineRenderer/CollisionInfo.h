@@ -6,8 +6,8 @@ class PhysicsObject;
 
 class CollisionInfo
 {
-public:
 
+public:
 	float overlapAmount;
 	Vec2 collisionNormal;
 
@@ -16,6 +16,4 @@ public:
 
 	bool IsOverLapping() const { return overlapAmount > 0.0f; }
 	void Resolve();
-
-
 };

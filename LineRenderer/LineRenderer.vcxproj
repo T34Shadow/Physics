@@ -206,7 +206,6 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="khrplatform.h" />
-    <ClInclude Include="LevelGrid.h" />
     <ClInclude Include="LineRenderer.h" />
     <ClInclude Include="Maths.h" />
     <ClInclude Include="PhysicsEnvro.h" />
@@ -214,7 +213,6 @@
     <ClInclude Include="Plane.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ApplicationHarness.h" />
-    <ClInclude Include="Stb__Image.h" />
     <ClInclude Include="TestingApp.h" />
     <ClInclude Include="TextStream.h" />
     <ClInclude Include="Utilities.h" />

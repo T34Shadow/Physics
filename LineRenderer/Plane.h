@@ -3,14 +3,16 @@
 
 class Plane : public PhysicsObject
 {
-public:
-
+private:
 	Vec2 normal;
 	float displacement;
-	Colour colour;
+public:
 
 	Plane(Vec2 _normal, float _displacement);
 	Plane(Vec2 _normal, float _displacement, Colour _colour);
+
+	Vec2& GetNormal() { return normal; }
+	float& GetDisplacement() {return displacement;}
 
 	virtual void Draw(LineRenderer* lines) const override;
 };

@@ -65,12 +65,12 @@ void PhysicsEnvro::Update(float delta)
 	//PHYSICS UPDATE
 	//-----------------------------------------------------------------------------
 	
-	if (objectHeld)
-	{
-		physicsObjects[0]->vel = (previousPos - cursorPos) / delta;
-		physicsObjects[0]->pos = cursorPos;
-		previousPos = cursorPos;
-	}
+	//if (objectHeld)
+	//{
+	//	physicsObjects[0]->GetVel() = (previousPos - cursorPos) / delta;
+	//	physicsObjects[0]->GetPos() = cursorPos;
+	//	previousPos = cursorPos;
+	//}
 	
 	for (PhysicsObject* thisObject : physicsObjects)
 	{
