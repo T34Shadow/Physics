@@ -6,8 +6,8 @@ class PhysicsObject;
 
 class CollisionInfo
 {
-
 public:
+
 	float overlapAmount;
 	Vec2 collisionNormal;
 

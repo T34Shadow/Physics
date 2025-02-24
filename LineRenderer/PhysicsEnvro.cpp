@@ -20,6 +20,22 @@ PhysicsEnvro::PhysicsEnvro()
 	appInfo.appName = "PHYSICS ENGINE";
 }
 
+PhysicsEnvro::~PhysicsEnvro()
+{
+	for (int i = 0; i < physicsObjects.size(); i++)
+	{
+		delete physicsObjects[i];
+	}
+	for (int i = 0; i < windTunnels.size(); i++)
+	{
+		delete windTunnels[i];
+	}
+	for (int i = 0; i < worldBoarders.size(); i++)
+	{
+		delete worldBoarders[i];
+	}
+}
+
 void PhysicsEnvro::Initialise()
 {
 	worldBoarders[0]=(new Plane(Vec2(0, -1), worldSize, Colour::RED));
@@ -44,6 +60,7 @@ void PhysicsEnvro::Initialise()
 		randPos.y = (rand() / (float)RAND_MAX) * 100;
 		physicsObjects.push_back(new Box2d(randPos, 1.7f,1.7f));
 	}
+
 	windTunnels.push_back(new ForceField(Vec2(0.0f, -85.0f), Vec2(0.0f, 1.0f), 100.0f, 100.0f, 10.0f,Colour::MAGENTA));
 	windTunnels.push_back(new ForceField(Vec2(0.0f, 85.0f), Vec2(0.0f, -1.0f), 100.0f, 100.0f, 10.0f,Colour::MAGENTA));
 	windTunnels.push_back(new ForceField(Vec2(85.0f, 0.0f), Vec2(-1.0f, 0.0f), 100.0f, 10.0f, 100.0f,Colour::MAGENTA));

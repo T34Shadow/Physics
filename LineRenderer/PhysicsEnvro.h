@@ -19,6 +19,7 @@ private:
 
 public:
 	PhysicsEnvro();
+	~PhysicsEnvro();
 	void Initialise() override;
 	void OnRightClick() override;
 	void OnRightRelease() override;

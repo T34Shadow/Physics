@@ -10,6 +10,7 @@ public:
 
 	Circle(Vec2 _pos, float _radius);
 	Circle(Vec2 _pos, float _radius,Colour _colour);
+	~Circle() = default;
 
 	float &GetRadius() { return radius; }
 

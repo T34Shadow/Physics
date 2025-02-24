@@ -15,8 +15,10 @@ protected:
 	float inverseMass; // Having a inverse mass of 0 means it will be static.
 		
 public:
+
 	PhysicsObject();
 	PhysicsObject(Vec2 _pos);
+	~PhysicsObject();
 
 	void Update(float _delta);
 	virtual void Draw(LineRenderer* lines) const =0;

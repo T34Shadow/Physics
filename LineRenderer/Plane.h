@@ -10,6 +10,7 @@ public:
 
 	Plane(Vec2 _normal, float _displacement);
 	Plane(Vec2 _normal, float _displacement, Colour _colour);
+	~Plane() = default;
 
 	Vec2& GetNormal() { return normal; }
 	float& GetDisplacement() {return displacement;}

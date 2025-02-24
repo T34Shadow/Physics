@@ -8,8 +8,6 @@
 #include "ForceField.h"
 #include "Plane.h"
 
-
-
 CollisionInfo GetOverlap(PhysicsObject* a, PhysicsObject* b);
 
 CollisionInfo OverlapCircleToCircle(Circle* a, Circle* b);
