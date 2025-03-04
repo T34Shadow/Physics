@@ -14,6 +14,18 @@ Box2d::Box2d(Vec2 _pos, float w, float h, Colour _colour) : PhysicsObject(_pos),
 	colour = _colour;
 }
 
+Box2d::Box2d(Vec2 _pos, float w, float h, Colour _colour, bool _isStatic) : PhysicsObject(_pos), width(w), height(h)
+{
+	if (_isStatic == true)
+	{
+		inverseMass = 0;
+	}
+	else
+	{
+		inverseMass = 1.0f / (width * height);
+	}
+	colour = _colour;
+}
 void Box2d::Draw(LineRenderer* lines) const
 {
 	Vec2 topLeft = pos + Vec2(-width, height) * 0.5f;

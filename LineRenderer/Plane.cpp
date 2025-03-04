@@ -24,7 +24,6 @@ Plane::Plane(Vec2 _normal, float _displacement, Colour _colour) : PhysicsObject(
 
 	normal.Normalise();
 }
-
 void Plane::Draw(LineRenderer* lines) const
 {
 	Vec2 tanget = normal.GetRotatedBy90();
@@ -36,5 +35,5 @@ void Plane::Draw(LineRenderer* lines) const
 	Vec2 end = planeOrigin + tanget *scale;
 
 	lines->DrawLineSegment(start, end, colour);
-	lines->DrawLineWithArrow(planeOrigin, planeOrigin + normal, 0.5f);
+	lines->DrawLineWithArrow(planeOrigin, planeOrigin - normal, 0.5f);
 }

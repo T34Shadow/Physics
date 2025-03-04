@@ -4,9 +4,11 @@
 
 void CollisionInfo::Resolve()
 {
-	if (!IsOverLapping()) return;
-
 	float totalInverseMass = objectA->GetInverseMass() + objectB->GetInverseMass();
+
+	if (totalInverseMass == 0) return;
+
+	if (!IsOverLapping()) return;
 
 	objectB->GetPos() += collisionNormal * overlapAmount * objectB->GetInverseMass() / totalInverseMass;
 	objectA->GetPos() -= collisionNormal * overlapAmount * objectA->GetInverseMass() / totalInverseMass;

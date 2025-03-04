@@ -26,9 +26,9 @@ public:
 	void AddForce(Vec2 force);
 	void AddImpules(Vec2 impulse);
 
-	Vec2 &GetPos() { return pos ; }
-	Vec2 &GetVel() { return vel; }
+	Vec2& GetPos() { return pos ; }
+	Vec2& GetVel() { return vel; }
 	Vec2& GetForceAcc() { return forceAccumulator; }
-	float &GetInverseMass() { return inverseMass; }
+	float& GetInverseMass() { return inverseMass; }
 
 };

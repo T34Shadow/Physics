@@ -1,7 +1,5 @@
 #pragma once
-#include "Box2d.h"
-
-class LineRenderer;
+#include "PhysicsObject.h"
 
 class ForceField : public PhysicsObject
 {
@@ -20,8 +18,8 @@ public:
 
 	float& GetWidth() { return width; }
 	float& GetHeight() { return height; }
-	Vec2 &GetNormalForce() { return normalForce; }
-	float &GetForceStrength() { return ForceStrength; }
+	Vec2& GetNormalForce() { return normalForce; }
+	float& GetForceStrength() { return ForceStrength; }
 
 	virtual void Draw(LineRenderer* lines) const override;
 
